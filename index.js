@@ -32,7 +32,7 @@ class Xwiper {
     onTouchEnd(event) {
         this.touchEndX = event.changedTouches[0].screenX;
         this.touchEndY = event.changedTouches[0].screenY;
-        handleGesture();
+        this.handleGesture();
     }
 
     onSwipeLeft(func) {
