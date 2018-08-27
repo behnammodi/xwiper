@@ -11,7 +11,6 @@ class Xwiper {
         this.onSwipeUpAgent = null;
         this.onSwipeDownAgent = null;
         this.onTapAgent = null;
-        this.handleGesture = this.handleGesture.bind(this);
 
         this.element = document.querySelector(element);
         this.element
@@ -25,39 +24,39 @@ class Xwiper {
             .addEventListener('touchend', this.onTouchEnd, false);
     }
 
-    onTouchStart(event) {
+    onTouchStart = (event) => {
         this.touchStartX = event.changedTouches[0].screenX;
         this.touchStartY = event.changedTouches[0].screenY;
     }
 
-    onTouchEnd(event) {
+    onTouchEnd = (event) => {
         this.touchEndX = event.changedTouches[0].screenX;
         this.touchEndY = event.changedTouches[0].screenY;
         this.handleGesture();
     }
 
-    onSwipeLeft(func) {
+    onSwipeLeft = (func) => {
         this.onSwipeLeftAgent = func;
     }
-    onSwipeRight(func) {
+    onSwipeRight = (func) => {
         this.onSwipeRightAgent = func;
     }
-    onSwipeUp(func) {
+    onSwipeUp = (func) => {
         this.onSwipeUpAgent = func;
     }
-    onSwipeDown(func) {
+    onSwipeDown = (func) => {
         this.onSwipeDownAgent = func;
     }
-    onTap(func) {
+    onTap = (func) => {
         this.onTapAgent = func;
     }
 
-    destroy() {
+    destroy = () => {
         this.element.removeEventListener('touchstart', this.onTouchStart);
         this.element.removeEventListener('touchend', this.onTouchEnd);
     }
 
-    handleGesture() {
+    handleGesture = () => {
         /**
          * swiped left
          */
