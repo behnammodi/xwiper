@@ -1,17 +1,17 @@
 class Xwiper {
-    element = null;
-    touchStartX = 0;
-    touchStartY = 0;
-    touchEndX = 0;
-    touchEndY = 0;
-    sensitive = 50;
-    onSwipeLeftAgent = null;
-    onSwipeRightAgent = null;
-    onSwipeUpAgent = null;
-    onSwipeDownAgent = null;
-    onTapAgent = null;
-
     constructor(element) {
+        this.element = null;
+        this.touchStartX = 0;
+        this.touchStartY = 0;
+        this.touchEndX = 0;
+        this.touchEndY = 0;
+        this.sensitive = 50;
+        this.onSwipeLeftAgent = null;
+        this.onSwipeRightAgent = null;
+        this.onSwipeUpAgent = null;
+        this.onSwipeDownAgent = null;
+        this.onTapAgent = null;
+
         this.element = document.querySelector(element);
         this.element
             .addEventListener(
@@ -24,29 +24,39 @@ class Xwiper {
             .addEventListener('touchend', this.onTouchEnd, false);
     }
 
-    onTouchStart = event => {
+    onTouchStart(event) {
         this.touchStartX = event.changedTouches[0].screenX;
         this.touchStartY = event.changedTouches[0].screenY;
     }
 
-    onTouchEnd = event => {
+    onTouchEnd(event) {
         this.touchEndX = event.changedTouches[0].screenX;
         this.touchEndY = event.changedTouches[0].screenY;
         handleGesture();
     }
 
-    onSwipeLeft = func => this.onSwipeLeftAgent = func;
-    onSwipeRight = func => this.onSwipeRightAgent = func;
-    onSwipeUp = func => this.onSwipeUpAgent = func;
-    onSwipeDown = func => this.onSwipeDownAgent = func;
-    onTap = func => this.onTapAgent = func;
+    onSwipeLeft(func) {
+        this.onSwipeLeftAgent = func;
+    }
+    onSwipeRight(func) {
+        this.onSwipeRightAgent = func;
+    }
+    onSwipeUp(func) {
+        this.onSwipeUpAgent = func;
+    }
+    onSwipeDown(func) {
+        this.onSwipeDownAgent = func;
+    }
+    onTap(func) {
+        this.onTapAgent = func;
+    }
 
-    destroy = () => {
+    destroy() {
         this.element.removeEventListener('touchstart', this.onTouchStart);
         this.element.removeEventListener('touchend', this.onTouchEnd);
     }
 
-    handleGesture = () => {
+    handleGesture() {
         /**
          * swiped left
          */
@@ -94,4 +104,4 @@ class Xwiper {
     }
 }
 
-export default Xwiper;
+module.exports = Xwiper;
