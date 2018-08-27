@@ -11,6 +11,7 @@ class Xwiper {
         this.onSwipeUpAgent = null;
         this.onSwipeDownAgent = null;
         this.onTapAgent = null;
+        this.handleGesture = this.handleGesture.bind(this);
 
         this.element = document.querySelector(element);
         this.element
