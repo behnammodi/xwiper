@@ -1,4 +1,4 @@
-class Xipwer {
+class Xwiper {
     element = null;
     touchStartX = 0;
     touchStartY = 0;
@@ -94,4 +94,4 @@ class Xipwer {
     }
 }
 
-export default Xipwer;
+export default Xwiper;
