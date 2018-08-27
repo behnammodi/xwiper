@@ -6,13 +6,13 @@
 
 swipe handler
 
-# install
+# Install
 
 ```npm
 npm install xwiper --save
 ```
 
-# use
+# How to use
 
 ```javascript
 import Xwiper from 'xwiper';
