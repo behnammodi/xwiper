@@ -1,11 +1,19 @@
+const defaults = {
+    threshold: 50,
+    passive: false
+};
+
 class Xwiper {
-    constructor(element) {
+
+    constructor(element, options = {}) {
+
+        this.options = Object.assign({}, defaults, options);
+
         this.element = null;
         this.touchStartX = 0;
         this.touchStartY = 0;
         this.touchEndX = 0;
         this.touchEndY = 0;
-        this.sensitive = 50;
         this.onSwipeLeftAgent = null;
         this.onSwipeRightAgent = null;
         this.onSwipeUpAgent = null;
@@ -22,16 +30,11 @@ class Xwiper {
         this.destroy = this.destroy.bind(this);        
         this.handleGesture = this.handleGesture.bind(this);
 
-        this.element = document.querySelector(element);
-        this.element
-            .addEventListener(
-                'touchstart',
-                this.onTouchStart,
-                false
-            );
+        let eventOptions = this.options.passive ? {passive: true} : false;
 
-        this.element
-            .addEventListener('touchend', this.onTouchEnd, false);
+        this.element = document.querySelector(element);
+        this.element.addEventListener('touchstart', this.onTouchStart, eventOptions);
+        this.element.addEventListener('touchend', this.onTouchEnd, eventOptions);
     }
 
     onTouchStart(event) {
@@ -70,36 +73,32 @@ class Xwiper {
         /**
          * swiped left
          */
-        if (this.touchEndX + this.sensitive <= this.touchStartX) {
-            this.onSwipeLeftAgent &&
-                this.onSwipeLeftAgent();
+        if (this.touchEndX + this.options.threshold <= this.touchStartX) {
+            this.onSwipeLeftAgent && this.onSwipeLeftAgent();
             return 'swiped left';
         }
 
         /**
          * swiped right
          */
-        if (this.touchEndX - this.sensitive >= this.touchStartX) {
-            this.onSwipeRightAgent &&
-                this.onSwipeRightAgent();
+        if (this.touchEndX - this.options.threshold >= this.touchStartX) {
+            this.onSwipeRightAgent && this.onSwipeRightAgent();
             return 'swiped right';
         }
 
         /**
          * swiped up
          */
-        if (this.touchEndY + this.sensitive <= this.touchStartY) {
-            this.onSwipeUpAgent &&
-                this.onSwipeUpAgent();
+        if (this.touchEndY + this.options.threshold <= this.touchStartY) {
+            this.onSwipeUpAgent && this.onSwipeUpAgent();
             return 'swiped up';
         }
 
         /**
          * swiped down
          */
-        if (this.touchEndY - this.sensitive >= this.touchStartY) {
-            this.onSwipeDownAgent &&
-                this.onSwipeDownAgent();
+        if (this.touchEndY - this.options.threshold >= this.touchStartY) {
+            this.onSwipeDownAgent && this.onSwipeDownAgent();
             return 'swiped down';
         }
 
