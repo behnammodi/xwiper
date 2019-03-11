@@ -1,1 +1,7 @@
-index.es6.js
+./src
+
+node_modules
+
+.prettierignore
+
+.prettierrc

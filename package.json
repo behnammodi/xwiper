@@ -1,10 +1,11 @@
 {
   "name": "xwiper",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir ./"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,10 @@
     "url": "https://github.com/uxitten/xwiper/issues"
   },
   "homepage": "https://github.com/uxitten/xwiper#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4"
+  }
 }
