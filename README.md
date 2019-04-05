@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/npm/dm/xwiper.svg" alt="Downloads">
 </a>
 
-swipe handler
+Swipe handler, support all browser
 
 # Install
 
@@ -31,18 +31,25 @@ import Xwiper from 'xwiper';
 
 const xwiper = new Xwiper('.slider');
 
-xwiper.onSwipeLeft(()=> console.log('swipe left'));
+xwiper.onSwipeLeft(() => console.log('swipe left'));
 
-xwiper.onSwipeRight(()=> console.log('swipe right'));
+xwiper.onSwipeRight(() => console.log('swipe right'));
 
-xwiper.onSwipeUp(()=> console.log('swipe up'));
+xwiper.onSwipeUp(() => console.log('swipe up'));
 
-xwiper.onSwipeDown(()=> console.log('swipe down'));
+xwiper.onSwipeDown(() => console.log('swipe down'));
 
-xwiper.onTap(()=> console.log('tap'));
+xwiper.onTap(() => console.log('tap'));
 
-// remove listener
-xwiper.destroy(); 
-
+// Remove listener
+xwiper.destroy();
 ```
 
+# Advance
+
+You can use element instance
+
+```javascript
+const slider = document.querySelector('.slider');
+const xwiper = new Xwiper(slider);
+```
