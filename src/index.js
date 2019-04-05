@@ -30,7 +30,8 @@ class Xwiper {
 
     let eventOptions = this.options.passive ? { passive: true } : false;
 
-    this.element = document.querySelector(element);
+    this.element = (element instanceof EventTarget) ? element : document.querySelector(element);
+    
     this.element.addEventListener(
       'touchstart',
       this.onTouchStart,
